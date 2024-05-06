@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  tao-training:
+    image: nvcr.io/nvidia/tao/tao-toolkit:5.3.0-pyt
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - ./training-scripts:/opt/nvidia/tools/training-scripts
+      - ./tao-experiments:/opt/nvidia/tools/tao-experiments
+      - /tmp/.X11-unix/:/tmp/.X11-unix
+      - /dev:/dev
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+    tty: true
+    stdin_open: true

@@ -1,0 +1,51 @@
+inference:
+  conf_threshold: 0.5
+  input_width: 640
+  input_height: 640
+  color_map:
+    '1': red
+    '2': red
+    '3': red
+    '4': red
+    '5': red
+    '6': red
+    '7': red
+    '8': red
+    '9': red
+    '10': red
+    '11': red
+    '12': red
+    '13': red
+    '14': red
+    '15': red
+    '16': red
+    '17': red
+    '18': red
+    '19': red
+    '20': red
+    '21': red
+    '22': red
+    '23': red
+    '24': red
+    '25': red
+    '26': red
+    
+dataset:
+  infer_data_sources:
+    image_dir: 
+     - /opt/nvidia/tools/tao-experiments/data/raw-data/val2017/
+    classmap: /opt/nvidia/tools/tao-experiments/data/raw-data/annotations/classmap.txt
+  num_classes: 27
+  batch_size: 4
+  workers: 8
+  augmentation:
+    fixed_padding: False
+model:
+  backbone: fan_small
+  num_feature_levels: 4
+  dec_layers: 6
+  enc_layers: 6
+  num_queries: 300
+  num_select: 100
+  dropout_ratio: 0.0
+  dim_feedforward: 2048
