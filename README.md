@@ -19,3 +19,8 @@ This script automates the process of setting up the environment, downloading nec
 This script is written for training a DINO model with fan small as backbone.
 
 You can modify the script to use different backbones or pretrained models available from NGC by adjusting the `pretrained_model` argument when creating the `TAOTrainingFlow` object.
+
+Once the environment is up and running, enter the container using the following command:
+
+```bash
+docker exec -it <container_name> bash
