@@ -20,13 +20,13 @@ Once the environment is up and running, enter the container using the following 
 
    ```bash
    docker exec -it <container_name> bash
-
+   ```
 # Start training
 Once inside the container, execute the following command to run the training script:
 
 ```bash
 python training-scripts/Training/train.py
-
+```
 
 # Note
 
@@ -38,4 +38,4 @@ Once the environment is up and running, enter the container using the following 
 
 ```bash
    docker exec -it <container_name> bash
-
+```
