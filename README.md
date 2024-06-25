@@ -1,50 +1,35 @@
-# Ollama with docker
+# TAO Training Flow
 
 ## Introduction
-This guide will help you set up and run the Ollama Docker container in both CPU-only and GPU-accelerated modes using Docker Compose.
+This script automates the process of setting up the environment, downloading necessary tools, and training a DINO model using NVIDIA TAO (Transfer Learning Toolkit). 
 
-## 1. Run the service
-### Start the cpu only service
-```
-docker-compose up -d ollama-cpu
-```
-### Start the GPU-accelerated service:
-```
-docker-compose up -d ollama-gpu
+## Prerequisites
+- Docker and Docker Compose installed
+- NVIDIA GPU with CUDA support (for training)
+- Dataset prepared in COCO format and placed under `tao-experiments/data`
+
+## Getting Started
+1. Clone this repository.
+2. Prepare your dataset according to the COCO format and place it under `tao-experiments/data`.
+3. Run the following command to start the environment:
+   ```bash
+   docker-compose up
+
+# Access the container
+Once the environment is up and running, enter the container using the following command:
+
+   ```bash
+   docker exec -it <container_name> bash
+   ```
+# Start training
+Once inside the container, execute the following command to run the training script:
+
+```bash
+python training-scripts/Training/train.py
 ```
 
-## 2. Downloading the Model
-### For the CPU-only version:
-```
-docker exec -it ollama ollama pull llama3
-```
-### For the GPU-accelerated version:
-```
-docker exec -it ollama-gpu ollama pull llama3
-```
-## 3. List and run the model
-### For the CPU-only version:
-```
-docker exec -it ollama ollama list
-docker exec -it ollama ollama run llama3
+# Note
 
-```
-### For the GPU-accelerated version:
-```
-docker exec -it ollama-gpu ollama list
-docker exec -it ollama-gpu ollama run llama3
-```
-## 4.Testing the llm
-```
-curl http://localhost:11434/api/generate -d '{
-  "model": "llama3",
-  "prompt": "List five popular programming languages",
-  "stream": true,
-  "options": {
-    "seed": 123,
-    "top_k": 20,
-    "top_p": 0.9,
-    "temperature": 0
-  }
-}'
-```
+This script is written for training a DINO model with fan small as backbone.
+
+You can modify the script to use different backbones or pretrained models available from NGC by adjusting the `pretrained_model` argument when creating the `TAOTrainingFlow` object.
