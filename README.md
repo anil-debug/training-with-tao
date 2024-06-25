@@ -13,7 +13,7 @@ docker-compose up -d ollama-cpu
 docker-compose up -d ollama-gpu
 ```
 
-## 2. Downloading and Running the Model
+## 2. Downloading the Model
 ### For the CPU-only version:
 ```
 docker exec -it ollama ollama pull llama3
@@ -21,4 +21,16 @@ docker exec -it ollama ollama pull llama3
 ### For the GPU-accelerated version:
 ```
 docker exec -it ollama-gpu ollama pull llama3
+```
+## 3. List and run the model
+### For the CPU-only version:
+```
+docker exec -it ollama ollama list
+docker exec -it ollama ollama run llama3
+
+```
+### For the GPU-accelerated version:
+```
+docker exec -it ollama-gpu ollama list
+docker exec -it ollama-gpu ollama run llama3
 ```
