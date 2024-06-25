@@ -34,3 +34,17 @@ docker exec -it ollama ollama run llama3
 docker exec -it ollama-gpu ollama list
 docker exec -it ollama-gpu ollama run llama3
 ```
+## 4.Testing the llm
+```
+curl http://localhost:11434/api/generate -d '{
+  "model": "llama3",
+  "prompt": "List five popular programming languages",
+  "stream": true,
+  "options": {
+    "seed": 123,
+    "top_k": 20,
+    "top_p": 0.9,
+    "temperature": 0
+  }
+}'
+```
